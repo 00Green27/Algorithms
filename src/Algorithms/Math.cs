@@ -6,10 +6,10 @@ namespace Algorithms
   {
     public static int Gsd(int a, int b)
     {
-      int x = a, y = b, remainder = 0;
+      int x = a, y = b;
       while (y != 0)
       {
-        remainder = x % y;
+        int remainder = x % y;
         x = y;
         y = remainder;
       }
