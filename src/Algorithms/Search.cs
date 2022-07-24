@@ -8,7 +8,7 @@ public static class Search
 
 		while (low <= hight)
 		{
-			int mid = (hight + low) / 2;
+			int mid = low + (hight - low) / 2;
 			if (values[mid] == item)
 			{
 				return mid;
