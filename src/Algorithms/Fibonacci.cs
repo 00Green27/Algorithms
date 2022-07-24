@@ -2,7 +2,7 @@ namespace Algorithms;
 
 public static class Fibonacci
 {
-	private static int Fibonacci(int N)
+	private static int Calculate(int N)
 	{
 		if (N == 0)
 		{
