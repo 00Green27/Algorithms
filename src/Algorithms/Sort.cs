@@ -4,21 +4,15 @@ public static class Sort
 {
 	public static void BubbleSort(int[] array)
 	{
-		var isSorted = false;
-		var counter = 1;
-		while (!isSorted)
+		for (var i = 0; i < array.Length; i++)
 		{
-			isSorted = true;
-			for (var i = 0; i < array.Length - counter; i++)
+			for (var j = 0; j < array.Length - i - 1; j++)
 			{
-				if (array[i] > array[i + 1])
+				if (array[j] > array[j + 1])
 				{
-					(array[i], array[i + 1]) = (array[i + 1], array[i]);
-					isSorted = false;
+					(array[j], array[j + 1]) = (array[j + 1], array[j]);
 				}
 			}
-
-			counter++;
 		}
 	}
 
