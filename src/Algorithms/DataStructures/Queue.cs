@@ -8,10 +8,7 @@ public class Queue<T>
 
 	public void Enqueue(T item)
 	{
-		var node = new Node<T>
-		{
-			Value = item
-		};
+		var node = new Node<T> { Value = item };
 
 		Length++;
 
@@ -55,4 +52,12 @@ public class Queue<T>
 
 		return _head.Value;
 	}
+
+
+	private class Node<T1>
+	{
+		public T1 Value { get; set; }
+		public Node<T1> Next { get; set; }
+	}
+
 }
