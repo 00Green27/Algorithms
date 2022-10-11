@@ -43,8 +43,51 @@ public static class Sort
 				}
 			}
 
-			(array[currentIndex], array[smallestIndex]) = (array[smallestIndex], array[currentIndex]);
+			if (currentIndex != smallestIndex)
+			{
+				(array[currentIndex], array[smallestIndex]) = (array[smallestIndex], array[currentIndex]);
+			}
+
 			currentIndex++;
 		}
+	}
+
+	public static void QuickSort(int[] array)
+	{
+		void Sort(int lo, int hi)
+		{
+			if (lo >= hi)
+			{
+				return;
+			}
+
+			var pivotIdx = Pivot(lo, hi);
+
+			Sort(lo, pivotIdx - 1);
+			Sort(pivotIdx + 1, hi);
+		}
+
+		int Pivot(int lo, int hi)
+		{
+			var pivot = array[hi];
+			var idx = lo - 1;
+
+			for (var i = lo; i < hi; i++)
+			{
+				if (array[i] <= pivot)
+				{
+					idx++;
+					(array[i], array[idx]) = (array[idx], array[i]);
+				}
+			}
+
+			idx++;
+			array[hi] = array[idx];
+			array[idx] = pivot;
+
+			return idx;
+		}
+
+		Sort(0, array.Length - 1);
 	}
 }
