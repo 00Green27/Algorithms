@@ -53,11 +53,9 @@ public class Queue<T>
 		return _head.Value;
 	}
 
-
 	private class Node<T1>
 	{
 		public T1 Value { get; set; }
 		public Node<T1> Next { get; set; }
 	}
-
 }

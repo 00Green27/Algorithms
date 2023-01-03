@@ -2,7 +2,6 @@ namespace Algorithms.DataStructures;
 
 public class Stack<T>
 {
-
 	private Node<T> _head;
 
 	public int Length { get; private set; }

@@ -1,17 +1,15 @@
 namespace Algorithms.DataStructures;
 
-public class LinkedList<T>
+public class LinkedList<TItem>
 {
-	private Node<T> _head;
-	private Node<T> _tail;
-
+	private Node<TItem> _head;
+	private Node<TItem> _tail;
 
 	public int Length { get; private set; }
 
-
-	public void Prepend(T item)
+	public void Prepend(TItem item)
 	{
-		var node = new Node<T> { Value = item };
+		var node = new Node<TItem> { Value = item };
 
 		Length++;
 		if (_head == null)
@@ -25,7 +23,7 @@ public class LinkedList<T>
 		_head = node;
 	}
 
-	public void InsertAt(T item, int idx)
+	public void InsertAt(TItem item, int idx)
 	{
 		if (idx > Length)
 		{
@@ -44,7 +42,7 @@ public class LinkedList<T>
 		Length++;
 
 		var curr = GetAt(idx);
-		var node = new Node<T> { Value = item };
+		var node = new Node<TItem> { Value = item };
 
 		node.Next = curr;
 		node.Prev = curr.Prev;
@@ -56,10 +54,9 @@ public class LinkedList<T>
 		}
 	}
 
-	public void Append(T item)
+	public void Append(TItem item)
 	{
-		var node = new Node<T> { Value = item };
-
+		var node = new Node<TItem> { Value = item };
 
 		Length++;
 		if (_tail == null)
@@ -74,7 +71,7 @@ public class LinkedList<T>
 		_tail = node;
 	}
 
-	public bool Remove(T item)
+	public bool Remove(TItem item)
 	{
 		var curr = _head;
 
@@ -95,7 +92,7 @@ public class LinkedList<T>
 		return RemoveNode(curr);
 	}
 
-	public T Get(int idx)
+	public TItem Get(int idx)
 	{
 		var node = GetAt(idx);
 		return node != null ? node.Value : throw new ArgumentOutOfRangeException(nameof(idx), "Index out of range");
@@ -113,7 +110,7 @@ public class LinkedList<T>
 		return RemoveNode(node);
 	}
 
-	private bool RemoveNode(Node<T> node)
+	private bool RemoveNode(Node<TItem> node)
 	{
 		Length--;
 		if (Length == 0)
@@ -148,7 +145,7 @@ public class LinkedList<T>
 		return true;
 	}
 
-	private Node<T> GetAt(int idx)
+	private Node<TItem> GetAt(int idx)
 	{
 		var curr = _head;
 		for (var i = 0; curr != null && i < idx; i++)
