@@ -4,14 +4,11 @@ public static class Math
 {
 	public static int Gsd(int a, int b)
 	{
-		int x = a, y = b;
-		while (y != 0)
+		while (b != 0)
 		{
-			int remainder = x % y;
-			x = y;
-			y = remainder;
+			(a, b) = (b, a % b);
 		}
 
-		return x;
+		return a;
 	}
 }
