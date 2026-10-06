@@ -2,9 +2,8 @@ using System.Collections;
 
 namespace Algorithms.DataStructures.Immutable;
 
-public interface IImStack<T> : IEnumerable<T>
+public interface IImStack<out T> : IEnumerable<T>
 {
-	IImStack<T> Push(T item);
 	T Peek();
 	IImStack<T> Pop();
 	bool IsEmpty { get; }
@@ -15,7 +14,6 @@ public class ImStack<T> : IImStack<T>
 	private class EmptyStack : IImStack<T>
 	{
 		public EmptyStack() { }
-		public IImStack<T> Push(T item) => new ImStack<T>(item, this);
 		public T Peek() => throw new InvalidCastException();
 		public IImStack<T> Pop() => throw new InvalidCastException();
 		public bool IsEmpty => true;
@@ -34,7 +32,7 @@ public class ImStack<T> : IImStack<T>
 		this.item = item;
 		this.tail = tail;
 	}
-	public IImStack<T> Push(T item) => new ImStack<T>(item, this);
+	public static IImStack<T> Push(T item, IImStack<T> tail) => new ImStack<T>(item, tail);
 	public T Peek() => item;
 	public IImStack<T> Pop() => tail;
 	public bool IsEmpty => false;
@@ -47,4 +45,10 @@ public class ImStack<T> : IImStack<T>
 	}
 
 	IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+}
+
+public static class ImStackExtensions
+{
+	public static IImStack<T> Push<T>(this IImStack<T> stack, T item) =>
+		ImStack<T>.Push(item, stack);
 }

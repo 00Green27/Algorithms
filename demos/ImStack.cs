@@ -5,6 +5,8 @@ using Algorithms.DataStructures.Immutable;
 using Algorithms.Utils;
 using static System.Console;
 
+WriteLine("An immutable stack");
+
 var s1 = ImStack<int>.Empty;
 var s2 = s1.Push(10);
 var s3 = s2.Push(20);
